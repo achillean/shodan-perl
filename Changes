@@ -1,5 +1,9 @@
 Revision history for shodan-perl
 
-0.01    Date/time
+0.2    01/11/2010
+		- New API functions: exploitdb_search and exploitdb_download
+		- Added wrapper functions to access Shodan's API to the ExploitDB data
+
+0.1    10/09/2010
         First version, released on an unsuspecting world.
 
