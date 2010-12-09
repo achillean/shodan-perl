@@ -1,5 +1,9 @@
 Shodan
 
+Visit the official Shodan API documentation at:
+
+[http://docs.shodanhq.com](http://docs.shodanhq.com)
+
 INSTALLATION
 
 To install this module, run the following commands:
@@ -31,6 +35,19 @@ Get all the information SHODAN has on the IP 217.140.75.46:
 
 	$host = $api->host('217.140.75.46');
 	print $host['ip'];
+
+Search the ExploitDB archive:
+	$results = $api->exploitdb_search('PHP', { author => 'nuffsaid' });
+	print 'Total results: ' . $results-{'total'};
+	my @matches = @{$result->{'matches'}};
+	for ( my $i = 0; $i < $#matches; $i++ ) {
+		print "$matches[$i]{id}\n";
+	}
+
+Download an exploit from ExploitDB:
+	# $exploit = $matches[0];
+	$file = $api->exploitdb_download( $exploit{id} );
+	print "Filename: $file{'filename'}\n";
 
 Make sure to check whether the API results contain the 'error' key, and if so handle the
 error appropriately:

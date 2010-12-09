@@ -160,4 +160,39 @@ sub exploitdb_search {
 	return $self->_request( "exploitdb/search", $args );
 }
 
+=head2 msf_download
+
+Download a metasploit module given the fullname (id) of it.
+            
+Arguments:
+id        -- fullname of the module (ex. auxiliary/admin/backupexec/dump)
+
+Returns:
+A dictionary with the following fields:
+filename        -- Name of the file
+content-type    -- Mimetype
+data            -- File content
+
+=cut
+
+sub msf_download {
+	my ( $self, $id ) = @_;
+
+	return $self->_request( "msf/download", { id => $id } );
+}
+
+=head2 msf_search
+
+Search for a metasploit module.
+
+=cut
+
+sub msf_search {
+	my ( $self, $query, $args ) = @_;
+	
+	$args->{'q'} = $query;
+
+	return $self->_request( "msf/search", $args );
+}
+
 1;    # End of Shodan::WebAPI

@@ -1,5 +1,9 @@
 Revision history for shodan-perl
 
+0.3    09/12/2010
+		- New API functions: msf_search and msf_download
+		- Added the ability to search for Metasploit modules using the Shodan API
+
 0.2    01/11/2010
 		- New API functions: exploitdb_search and exploitdb_download
 		- Added wrapper functions to access Shodan's API to the ExploitDB data
