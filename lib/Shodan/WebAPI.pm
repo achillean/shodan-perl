@@ -8,7 +8,7 @@ use LWP::UserAgent;
 use warnings;
 use strict;
 
-our $VERSION = '0.3';
+our $VERSION = '0.4';
 
 =head1 NAME
 
@@ -80,6 +80,25 @@ sub search {
 	my ( $self, $query ) = @_;
 
 	return $self->_request( "search", { q => $query } );
+}
+
+=head2 count
+
+Search the SHODAN database and only return the total number of results,
+not any of the actual matches.
+
+Arguments:
+query    -- search query; identical syntax to the website
+
+Returns:
+A hash with 1 main item: total.
+
+=cut
+
+sub count {
+	my ( $self, $query ) = @_;
+
+	return $self->_request( "count", { q => $query } );
 }
 
 =head2 host
