@@ -70,6 +70,9 @@ Search the SHODAN database.
 Arguments:
 query    -- search query; identical syntax to the website
 
+Optional Arguments:
+page     -- page number; use it to iterate over all the search results
+
 Returns:
 A hash with 3 main items: matches, countries and total.
 Visit the website for more detailed information.
@@ -77,9 +80,16 @@ Visit the website for more detailed information.
 =cut
 
 sub search {
-	my ( $self, $query ) = @_;
+	my ( $self, $query, $page ) = @_;
+	my $args = {};
 
-	return $self->_request( "search", { q => $query } );
+	if (defined $page) {
+		$args->{'p'} = $page;
+	}
+
+	$args->{'q'} = $query;
+
+	return $self->_request( "search", $args );
 }
 
 =head2 count
