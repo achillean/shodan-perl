@@ -55,6 +55,7 @@ sub _request {
 	# Send the request
 	my $ua       = LWP::UserAgent->new;
 	my $response = $ua->request( GET $url);
+	return if $response->code ne '200';
 
 	# Parse the JSON
 	my $json_parser = JSON::XS->new();
